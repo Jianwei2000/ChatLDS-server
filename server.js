@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 8080;
 const httpServer = require("http").createServer(app);
 const socketio = require("socket.io");
 const mongoose = require("mongoose");
@@ -41,6 +42,6 @@ app.use("/api/auth", authRoute); //登入、註冊API
 app.use("/google", googleRoute); //google第三方登入
 
 //server啟動
-httpServer.listen(8080, () => {
-  console.log("後端server已啟動，端口:8080...");
+httpServer.listen(PORT, () => {
+  console.log(`後端server已啟動，端口:${PORT}...`);
 });
